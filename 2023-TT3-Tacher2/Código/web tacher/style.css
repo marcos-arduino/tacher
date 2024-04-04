@@ -1,0 +1,211 @@
+/*-------------------------Paleta de colores--------------------------- */
+
+.colorcfeff0 {
+    color: #cfeff0;
+}
+.colore1dece {
+    color: #e1dece;
+}
+.colora9ccb1 {
+    color: #a9ccb1;
+}
+.color9ebb9c {
+    color: #9ebb9c;
+}
+.color59766b {
+    color: #59766b;
+}
+
+/* ---------------------------body------------------------------ */
+
+body {
+    background-color: #708679;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    background-image: url("img/fondo_index2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    padding-bottom: 22em;
+    min-height: 100vh;
+}
+
+.sub-body{
+    padding-bottom: 31em;
+}
+
+/* ----------------------------header-------------------------------- */
+.div-header {
+    background-color: #708679;
+}
+.header_text {
+    color: white;
+}
+.header_text:hover {
+    color: #cfeff0;
+}
+.header_buttoms {
+    color: white;
+    border: none;
+    background-color: #708679;
+}
+
+.logo-tacher {
+    height: 50px;
+}
+
+.elem-nav-i-f-sn:hover {
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+}
+
+.elem-nav-i-f-sn:hover .header_text {
+    color: black;
+}
+
+.header_buttoms:hover {
+    background-color: rgba(255, 255, 255, 0.501);
+    color: black;
+}
+
+.header_buttoms:hover .header_buttoms {
+    color: black;
+}
+
+.registrarse-background {
+    background-color: white;
+    color: black;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffff;
+}
+
+/* ---------------------------------------body------------------------------------- */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.form-label {
+    color: white;
+}
+.centrar{
+    margin-top: 150px;
+}
+.centrar2{
+    margin-top: 125px;
+}
+ -------------------------------------objetivos----------------------------------------- */
+.fondo {
+    padding-bottom: 30px;
+}
+
+.banner-publi {
+    background-color: rgba(255, 255, 255, 0.084);
+    background-color: transparent;
+    border: none;
+}
+
+.objetivos-title {
+    padding: 15px;
+    color: white;
+}
+
+.objetivosbox {
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+}
+
+.objetivosbox:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+    transition: all 0.5s;
+    color: black;
+    .objetivos-registrarse {
+        color: black;
+    }
+}
+
+.direcciones {
+    color: black;
+    text-decoration: none;
+}
+
+.objetivos-registrarse {
+    color: white;
+}
+
+/* ---------------------------DEVELOPERS/TESTIMONIALS------------------------- */
+
+.div-Testimonios {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    color: white;
+}
+.tamano-circulo {
+    width: 80px;
+    height: 80px;
+}
+.margen-desarrolladores {
+    margin-bottom: 20px;
+}
+
+.texto-devs {
+    color: white;
+}
+
+/* ----------------------------FOOTER--------------------------- */
+
+.div-footer-tacher {
+    background-color: #708679;
+    font-size: 25px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-palabras {
+    color: black;
+    text-decoration: none;
+}
+
+.footer-palabras:hover {
+    color: #cfeff0;
+}
+
+.footer-iconos:hover {
+    color: #cfeff0;
+}
+
+.footer_text {
+    color: black;
+}
+
+.footer_text:hover {
+    color: #cfeff0;
+}
+
+.mapa {
+    font-size: 32px;
+    color: black;
+}
+
+.facebooket {
+    font-size: 32px;
+    color: black;
+}
+.gmail {
+    font-size: 32px;
+    color: black;
+}
+.mailtext{
+    font-size: 16px;
+}
