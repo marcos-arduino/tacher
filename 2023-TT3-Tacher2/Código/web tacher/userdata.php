@@ -16,8 +16,7 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- Link a CSS -->
     <link rel="stylesheet" href="./style.css" />
-    <!-- Link a Javascrypt -->
-
+    
     <!-- Logo Pagina -->
     <link rel="shortcut icon" href="img/logo_tacher.png">
     <!-- Link a Boxicons -->
@@ -26,7 +25,11 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
-    <title>Tacher</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <title>Tacher</title>   
 </head>
 
 <body class="sub-body">
@@ -62,23 +65,44 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
         </div>
     </header>
     <div class="container px-4 py-5" id="featured-3">
-        <h2 class="pb-2 border-bottom" style="color: white">Datos de Consultas:</h2>
+        <h2 class="pb-2 border-bottom" style="color: white">Datos del Usuario:</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="feature row objetivosbox">
+            <div class="feature col objetivosbox">
                 <h4 class="fs-4 text-body-emphasis">Ranking de Usuarios</h4>
                 <h3>#<?php echo $resultado_rank[0]['Rank']; ?></h3>
             </div>
-            <div class="feature row objetivosbox">
+            <div class="feature col objetivosbox">
                 <h4 class="fs-4 text-body-emphasis">Nombre del Usuario</h4>
                 <h3><?php echo $data_usuario[0]['Nombre']; ?></h3>
             </div>
-            <div class="feature row objetivosbox">
+            <div class="feature col objetivosbox">
                 <h4 class="fs-4 text-body-emphasis">Puntos recolectados</h4>
                 <h3><?php echo $data_puntos[0]['puntos']; ?></h3>
             </div>
         </div>
     </div>
+
+    <script>
+        var dni = <?php echo $data_usuario[0]['DNI']; ?>; /* CONSULTA DNI PHP  */
+    </script>
+
+    <!-- BOTON APARICION QR -->
+    <div class="botonVerQR boton-modal">
+        <label for="btn-modal">
+            <i class='simboloQR bx bx-qr'></i>
+        </label>
+    </div>
     
+    <!-- VENTANA MODAL QR APARECIDO -->
+    <input type="checkbox" id="btn-modal">
+    <div class="container-modal">
+        <div class="content-modal">
+            <div id="contenedorQR"></div>
+            <script defer src="./qr_generator.js"></script>
+        </div>
+        <label for="btn-modal" class="cerrar-modal"></label>
+    </div>
+
     <footer class="footer">
         <div class="fluid-container black div-footer-tacher">
             <div class="row g-0 d-flex">
@@ -117,7 +141,7 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
                             </a>
                         </div>
                     </div>
-                   
+                
                         <a href="tel:+5491165742379" class="text-black footer-palabras">+54 9 11 6574-2379</a>
                         <a href="mailto:tacher2consultas@gmail.com" class="text-black footer-palabras">
                             <h5 class="mailtext">tacher2consultas@gmail.com</h5>
