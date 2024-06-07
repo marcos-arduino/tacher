@@ -124,3 +124,43 @@ function registrarPuntos($puntos, $dni, $conexion) // esta funcion se encarga de
         die();
     }
 }
+
+/* HUMO DEL INGERNIEROOOOOOOOOOOOOOOO */
+
+function countUsers($conexion) // definimos la función para contar la cantidad de usuarios en la base de datos
+{
+    try {
+        $pdo = $conexion->prepare('SELECT COUNT(*) as total FROM usuarios'); // sentencia SQL para contar el número de usuarios
+        $pdo->execute() or die(print($pdo->errorInfo())); // ejecutamos la consulta y si hay un error se imprime la información del error
+        $resultado = $pdo->fetch(PDO::FETCH_ASSOC); // obtenemos el resultado de la consulta
+        return $resultado['total']; // retornamos la cantidad de usuarios
+    } catch (PDOException $error) {
+        echo $error->getMessage(); // en caso de error, mostramos el mensaje de error
+        die(); // terminamos la ejecución
+    }
+}
+
+function countProducts($conexion) {
+    try {
+        $pdo = $conexion->prepare('SELECT COUNT(*) as total FROM productos');
+        $pdo->execute() or die(print($pdo->errorInfo()));
+        $resultado = $pdo->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'];
+    } catch (PDOException $error) {
+        echo $error->getMessage();
+        die();
+    }
+}
+
+function countTotalPoints($conexion) {
+    try {
+        $pdo = $conexion->prepare('SELECT SUM(puntos) as total FROM puntos_usuarios');
+        $pdo->execute() or die(print($pdo->errorInfo()));
+        $resultado = $pdo->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'];
+    } catch (PDOException $error) {
+        echo $error->getMessage();
+        die();
+    }
+}
+

@@ -20,14 +20,13 @@
 
 body {
     background-color: #708679;
-    font-family: "Poppins", sans-serif;
+    font-family: "Lexend", sans-serif;
     border: none;
     background-image: url("img/fondo_index2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: relative;
-    padding-bottom: 22em;
     min-height: 100vh;
 }
 
@@ -37,30 +36,37 @@ body {
 
 /* ----------------------------header-------------------------------- */
 .div-header {
-    background-color: #708679;
+    background-color: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(20px);
 }
 .header_text {
     color: white;
 }
 .header_text:hover {
-    color: #cfeff0;
+    color: gray;
 }
 .header_buttoms {
     color: white;
     border: none;
-    background-color: #708679;
+    backdrop-filter: blur(10px);
 }
-
 .logo-tacher {
     height: 50px;
 }
-
-.elem-nav-i-f-sn:hover {
-    background-color: white;
-    color: black;
-    border-radius: 4px;
+.navbarbutons{
+    margin: 0px !important;
 }
 
+.burga-item:hover{
+    background-color: #9ebb9c;
+    color: black;
+}
+.elem-nav-i-f-sn:hover {
+    background-color: rgba(255, 255, 255, 0.501);
+    color: black;
+    border-radius: 15px;
+    transition: 1000ms;
+}
 .elem-nav-i-f-sn:hover .header_text {
     color: black;
 }
@@ -68,6 +74,8 @@ body {
 .header_buttoms:hover {
     background-color: rgba(255, 255, 255, 0.501);
     color: black;
+    transition: 800ms;
+
 }
 
 .header_buttoms:hover .header_buttoms {
@@ -83,6 +91,10 @@ body {
     color: #ffff;
 }
 
+.logo-tacher-header:hover{
+    transform: rotate(90deg);
+    transition: 2000ms;
+}
 /* ---------------------------------------body------------------------------------- */
 .icon {
     display: inline-block;
@@ -92,7 +104,11 @@ body {
     stroke: currentColor;
     fill: currentColor;
 }
-
+#PRINCIPIO{
+    background-image: url(./img/Orange\ Coral.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .form-label {
     color: white;
 }
@@ -102,6 +118,53 @@ body {
 .centrar2{
     margin-top: 125px;
 }
+
+.text-body-emphasis{
+    color: white !important;
+}
+
+.presentacion-tacher{
+    color: white;
+    margin: 0% 20%;
+    padding: 100px 0px 50px 0px;
+}
+
+.sector-app{
+    justify-content: center;
+}
+.pechland2{
+    padding: 200px;
+}
+@media (max-width: 1199px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 660px;
+    }
+
+    .contenido-app .u-text-2 {
+        margin-right: 114px;
+    }
+}
+
+@media (max-width: 991px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 506px;
+    }
+
+    .contenido-app .u-text-2 {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 380px;
+    }
+}
+
+@media (max-width: 575px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 239px;
+    }}
  -------------------------------------objetivos----------------------------------------- */
 .fondo {
     padding-bottom: 30px;
@@ -125,7 +188,7 @@ body {
 }
 
 .objetivosbox:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.501);
     transform: scale(1.05);
     transition: all 0.5s;
     color: black;
@@ -165,11 +228,13 @@ body {
 /* ----------------------------FOOTER--------------------------- */
 
 .div-footer-tacher {
-    background-color: #708679;
+    background-color: rgba(255, 255, 255,);
+    backdrop-filter: blur(20px);
     font-size: 25px;
-    position: absolute;
     bottom: 0;
     width: 100%;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 .footer-palabras {
@@ -208,4 +273,59 @@ body {
 }
 .mailtext{
     font-size: 16px;
+}
+
+.elem-footeter-tacher:hover{
+    background-color: rgba(255, 255, 255, 0.501);
+    border-radius: 4px;
+    transition: 800ms;
+    color: white ;
+
+}
+
+.logo-tacher-footer:hover{
+    transform: rotate(360deg);
+    transition: 1000ms;
+}
+/* ----------------------------Datos tacher--------------------------- */
+
+
+.datos-tacher{
+    background-image: url(./img/render.jpg);
+}
+/* ----------------------------Pricing tacher--------------------------- */
+
+.items-pricing{
+    padding: 50px;
+}
+
+.lista-caracteristicas{
+    padding: 40px;
+}
+
+.caracteristica-ind{
+    padding-bottom: 20px;
+}
+.imagen-pricing{
+    opacity: 0%;
+}
+
+.contenedor-pricing:hover{
+    transform: scale(1.01);
+    transition: 500ms;
+}
+/* ----------------------------Contactoo--------------------------- */
+
+.seccionContacto{
+    background-color:white;
+}
+
+.contacto-section{
+    padding: 0% 20%;
+}
+
+/* ----------------------------FAQS--------------------------- */
+
+.section-FAQ{
+    padding: 0% 20%;
 }
