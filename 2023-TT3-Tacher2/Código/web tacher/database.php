@@ -1,17 +1,23 @@
 <?php
 function conexion() // definimos la funcion que va a devolver el objeto para realizar consultas
 {
-    try {
-        $conexion = new PDO("mysql:host=localhost;port=3306;dbname=id21247720_tacher_db", "root", "");
-        // este es el caso en que la conexion se esté haciendo para xampp porque requiere otros parametros
-    } catch (PDOException) {
-        $conexion = new PDO("mysql:host=sql106.byetcluster.com;port=3306;dbname=if0_35180481_tacher2", "if0_35180481", "o1nd3sUOIdKM6a");
-        // esta conexion se realizará cuando se esté hosteando para 'www.tacher2.000.pe' en infinityfree
-    } finally {
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-        return $conexion; // se retorna el objeto para poder usarlo en las diferentes funciones que ejecutan sentencias sql
+    try{
+        $conexion = new PDO('mysql:host=localhost;port=3306;dbname=id22134803_db_test', 'id22134803_tacher_test', 'Tacher_123');
+        return $conexion;
+    } catch(PDOException $error) {
+        echo -1;
     }
+//    try {
+//        $conexion = new PDO("mysql:host=localhost;port=3306;dbname=id21247720_tacher_db", "root", "");
+//        // este es el caso en que la conexion se esté haciendo para xampp porque requiere otros parametros
+//    } catch (PDOException) {
+//       $conexion = new PDO("mysql:host=sql106.byetcluster.com;port=3306;dbname=if0_35180481_tacher2", "if0_35180481", "o1nd3sUOIdKM6a");
+//       // esta conexion se realizará cuando se esté hosteando para 'www.tacher2.000.pe' en infinityfree
+//    } finally {
+//        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+//        return $conexion; // se retorna el objeto para poder usarlo en las diferentes funciones que ejecutan sentencias sql
+//    }
 }
 function registro($dni, $nombre, $conexion) // se define la funcion capaz de registrar usuarios a la db
 {
@@ -82,8 +88,6 @@ function userData($dni, $conexion) // definimos la funcion que devuelve los dato
     }
     try {
         $pdo = $conexion->prepare('SELECT Rank FROM (SELECT *, RANK() OVER(ORDER BY puntos DESC) as Rank FROM puntos_usuarios) AS Subquery WHERE dni_usuario = ?');
-
-        
         // sentencia sql que consulta el ranking de usuarios y el correspondiente al usuario solicitado, mediante una subconsulta se obtiene el orden que le da el ranking en base a los puntos
         $pdo->bindParam(1, $dni);  // le damos el valor de la variable $dni que se pasó como parametro al llamar la funcion
         $pdo->execute(); // se ejecuta la consulta
