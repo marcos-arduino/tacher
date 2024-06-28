@@ -1,7 +1,5 @@
 <?php
 
-
-
 include_once "database.php"; // importo el archivo que ejecuta las sentencias sql
 
 // la linea 13 es lo mismo que hacer:
