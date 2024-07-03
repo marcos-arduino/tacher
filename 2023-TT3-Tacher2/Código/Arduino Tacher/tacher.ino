@@ -4,17 +4,22 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ESP32Servo.h>
+#include <LiquidCrystal_I2C.h>
 
 
 Servo SERVOMOTOR;
 const int PINSERVO = 35;
-int buttonPin = 25;
+int SENSOR_MAGNETICO = 25;
 
 const char* WIFI_SSID = "Tacher";
 const char* WIFI_PASSWORD = "planeta123";
 
 SoftwareSerial mySerial(27, 26); // RX, TX
 GM65_scanner scanner(&mySerial);
+
+const int LCDCOLUMNS = 16;
+const int LCDROWS = 2;
+LiquidCrystal_I2C lcd(0x27, LCDCOLUMNS, LCDROWS);  
 
 unsigned long tiempoInicio; // Declaración de tiempoInicio en el ámbito global
 unsigned long duracion = 60000;
@@ -23,8 +28,10 @@ unsigned long duracion = 60000;
 
 
 void setup() {
-
-  pinMode(buttonPin,INPUT_PULLUP);
+  lcd.init();
+  lcd.backlight();
+  msj_lcd(1);
+  pinMode(SENSOR_MAGNETICO,INPUT_PULLUP);
   Serial.begin(115200);
   mySerial.begin(9600);
   SERVOMOTOR.attach(PINSERVO);
@@ -64,7 +71,7 @@ String scannerProducto() {
       return "-1";  // Se quedó sin tiempo
     }
 
-    if (digitalRead(buttonPin) == LOW) {
+    if (digitalRead(SENSOR_MAGNETICO) == LOW) {
       delay(250);
       scanner.scan_once();
       producto = scanner.get_info();
@@ -140,7 +147,7 @@ String obtenerDNI(String str){
 String funcionDNI(){
   while(true){
     
-  if(digitalRead(buttonPin) == HIGH){
+  if(digitalRead(SENSOR_MAGNETICO) == HIGH){
     String dni = "";
     Serial.println(dni);
     delay(1000);
@@ -212,13 +219,86 @@ String consultaDNI(String dni){
   http.end();
 }
 
+void msj_lcd(int numero)
+{
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  // * saqué los breaks
+  switch (numero)
+  {
+    case 0:
+      lcd.clear();
+      break;
+    case 1:
+      lcd.print("Inicializando");
+      lcd.setCursor(0,1);
+      lcd.print("el sistema");
+      break;
+    case 2:
+      lcd.print("Escanee el Dni");
+      lcd.setCursor(0,1);
+      lcd.print("horizontalmente");
+      break;
+    case 3:
+      lcd.print("No se encontró");
+      lcd.setCursor(0,1);
+      lcd.print("un código barras");
+      break;
+    case 4:
+      lcd.print("Ingrese producto");
+      lcd.setCursor(0,1);
+      lcd.print("y cierre puerta");
+      break;
+    case 5:
+      lcd.print("Cierre la puerta");
+      break;
+    case 6:
+      lcd.print("No ha ingresado");
+      lcd.setCursor(0,1);
+      lcd.print("un producto");
+      break;
+    case 7:
+      lcd.print("El DNI ");
+      lcd.setCursor(0,1);
+      lcd.print("no se encuentra");
+      break;
+    case 8:
+      lcd.print("Colocar producto");
+      lcd.setCursor(0,1);
+      lcd.print("debajo del escaner");
+      break;
+    case 9:
+      lcd.print("Producto no"); // encontrado, pero si el producto es reciclable tirelo en un tacho verde!");
+      lcd.setCursor(0,1);
+      lcd.print("registrado");
+      break;
+    case 10:
+      lcd.print("Cargando...");
+      break;
+    default:
+      lcd.print("Se acredito:");
+      lcd.setCursor(0,1);
+      lcd.print(numero);
+      break;
+  }
+}
 void loop(){
+  msj_lcd(2);
   String dni = funcionDNI();
   Serial.println(dni);
   delay(1000);
   if (consultaDNI(dni) == "1"){ // Significa que encontro el dni en la base de datos
-
     Serial.println("Se encontro el dni");
+    
+    while (digitalRead(SENSOR_MAGNETICO) == HIGH) {
+      msj_lcd(8);
+      delay(500);
+      msj_lcd(4);
+      delay(500);
+    }
+    msj_lcd(10);
+    delay(1000);
+
     String producto = scannerProducto();
     Serial.println(producto);
     String valorPuntaje = consultaProducto(dni, producto);
