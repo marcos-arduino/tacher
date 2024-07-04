@@ -315,7 +315,3 @@ void loop(){
   }
 }
 
-
-
-
-jaja soy giglio
