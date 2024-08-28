@@ -110,7 +110,8 @@ function consultaScanner($producto, $dni, $conexion)
             deposito($producto, $dni, $conexion);
             return $resultado[0]['valor_puntos']; // se retonra le valor de los puntos para que el codigo de arduino de la placa ESP32 sepa cuantos puntos se le asignaron al usuarioaaa
         } else {
-            return 0; // en caso de que no haya habido resultado positivo en la consulta (es decir, no se encontró un producto registrado coincidente con el codigo de barras que envió el codigo de arduino), se retorna un '0' para indicarle el resultado de la consulta al arduino
+             registrarProducto($producto, $conexion);
+             consultaScanner($producto, $dni, $conexion);
         }
     } catch (PDOException $error) {
         echo $error->getMessage();
@@ -132,9 +133,20 @@ function registrarPuntos($puntos, $dni, $conexion) // esta funcion se encarga de
 
 function deposito($producto, $dni, $conexion){
     try {
-        $pdo = $conexion->prepare('INSERT INTO registro_deposito VALUES (NULL, ?, ?)');
-        $pdo->bindParam(1, $dni); // se utiliza la variable $puntos que lleva el valor en puntos del producto escaneado y se manda como parámetro al UPDATE que se ejecutan en la DB
+        $pdo = $conexion->prepare('INSERT INTO registro_deposito VALUES (NULL, ?, ?, now())');
+        $pdo->bindParam(1, $dni);
         $pdo->bindParam(2, $producto);
+        $pdo->execute() or die(print($pdo->errorInfo()));
+    } catch (PDOException $error) {
+        echo $error->getMessage();
+        die();
+    }
+}
+
+function registrarProducto($producto, $conexion){
+    try{
+        $pdo = $conexion->prepare('INSERT INTO productos VALUES (?, NULL, NULL)');
+        $pdo->bindParam(1, $producto);
         $pdo->execute() or die(print($pdo->errorInfo()));
     } catch (PDOException $error) {
         echo $error->getMessage();
