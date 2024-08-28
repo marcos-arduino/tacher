@@ -145,7 +145,7 @@ function deposito($producto, $dni, $conexion){
 
 function registrarProducto($producto, $conexion){
     try{
-        $pdo = $conexion->prepare('INSERT INTO productos VALUES (?, NULL, NULL)');
+        $pdo = $conexion->prepare('INSERT INTO productos VALUES (?, NULL, 1)');
         $pdo->bindParam(1, $producto);
         $pdo->execute() or die(print($pdo->errorInfo()));
     } catch (PDOException $error) {
