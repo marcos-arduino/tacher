@@ -27,7 +27,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: relative;
-    padding-bottom: 22em;
+    padding-bottom: 18em;
     min-height: 100vh;
 }
 
@@ -341,16 +341,19 @@ body {
     color: white;
 }
 
+
+
 /* ---------------------------DEVELOPERS/TESTIMONIALS------------------------- */
 
 .div-Testimonios {
     padding-top: 40px;
     padding-bottom: 80px;
     color: white;
+    margin-bottom: 100px;
 }
 .tamano-circulo {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
 }
 .margen-desarrolladores {
     margin-bottom: 20px;
@@ -407,6 +410,5 @@ body {
 .mailtext{
     font-size: 16px;
 }
-
 
 
