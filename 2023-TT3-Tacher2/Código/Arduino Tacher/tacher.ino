@@ -1,149 +1,143 @@
-//-------------------------------------------------LIBRERÍAS---------------------------------------------------------------------
-#include <iostream>
-#include <string>
-#include <WiFi.h> // Para la conexion wifi
-#include <HTTPClient.h> // Para hacer la conexion arduino/pagina Web (php)
-#include "GM65_scanner.h" // para el scanner
 #include <SoftwareSerial.h>
-#include <LiquidCrystal.h> // para la LCD
-#include <ESP32Servo.h> // Para incluir la libreria de 'Kevin'
+#include "GM65_scanner.h"
+#include <vector>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <ESP32Servo.h>
+#include <LiquidCrystal_I2C.h>
 
-//-----------------------------------------------DEFINICION VARIABLES-------------------------------------------------------------
 
-// Instanciamos nuestro servo
-Servo servoMotor;
-const int pinServo = 2;
 
-// Ajustes wifi
 const char* WIFI_SSID = "Tacher";
 const char* WIFI_PASSWORD = "planeta123";
-
-String user = "Tacher";
-String pass = "planeta123";
-
-SoftwareSerial mySerial(26, 27); // RX, TX VER BIEN QUE PINES TIENE EL PUERTO SERIE DE LA ESP32
-
-GM65_scanner scanner(& mySerial);
-
-LiquidCrystal lcd_1(23, 22, 19, 18, 5, 17);
-
-const int sensor_magnetico = 15; // Definir bien que PIN va a ser el sensor magnetico
 
 unsigned long tiempoInicio; // Declaración de tiempoInicio en el ámbito global
 unsigned long duracion = 60000;
 
-//-----------------------------------------FUNCION LCD---------------------------------------------------------
+SoftwareSerial mySerial(27, 26); // RX, TX
+GM65_scanner scanner(&mySerial);
 
-void mensaje_LCD(int numero)
+Servo SERVOMOTOR;
+const int PINSERVO = 33;
+
+const int SENSOR_MAGNETICO = 23;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);  
+
+void setup() {
+
+  lcd.init();
+  lcd.backlight();
+  msj_lcd(1);
+
+  SERVOMOTOR.attach(PINSERVO);
+  SERVOMOTOR.write(0);
+
+  pinMode(SENSOR_MAGNETICO,INPUT_PULLUP);
+  Serial.begin(115200);
+  mySerial.begin(9600);
+  //trampilla();
+  
+  
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.println("Conectandose a WiFi...");
+  }
+  Serial.println("Conexion exitosa a WiFi ");
+  Serial.println(WiFi.localIP());
+
+
+  Serial.println("initialize the scanner...");
+  scanner.init();
+  Serial.println("enable the setting QR code");
+  scanner.enable_setting_code();
+  Serial.println("change to command trigger mode");
+  scanner.set_working_mode(1);
+  scanner.clear_buffer();
+}
+
+void msj_lcd(int numero)
 {
-  lcd_1.clear();
-  lcd_1.setCursor(0, 0);
+  lcd.clear();
+  lcd.setCursor(0, 0);
   // * saqué los breaks
   switch (numero)
   {
     case 0:
-      lcd_1.clear();
+      lcd.clear();
       break;
     case 1:
-      lcd_1.print("Escanee el Dni");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("horizontalmente");
+      lcd.print("Inicializando");
+      lcd.setCursor(0,1);
+      lcd.print("el sistema");
       break;
     case 2:
-      lcd_1.print("No se encontró");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("un código barras");
+      lcd.print("Ingrese su DNI");
+      lcd.setCursor(0,1);
+      lcd.print("de forma horizontal");
       break;
     case 3:
-      lcd_1.print("El DNI ");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("no se encuentra");
+      lcd.print("DNI escaneado");
       break;
     case 4:
-      lcd_1.print("Ingrese producto");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("y cierre puerta");
+      lcd.print("Ingrese producto");
+      lcd.setCursor(0,1);
+      lcd.print("y cierre puerta");
       break;
     case 5:
-      lcd_1.print("Cierre la puerta");
+      lcd.print("Escaneando");
+      lcd.setCursor(0,1);
+      lcd.print("...");
       break;
     case 6:
-      lcd_1.print("No ha ingresado");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("un producto");
+      lcd.print("Se escaneó");
+      lcd.setCursor(0,1);
+      lcd.print("correctamente");
       break;
     case 7:
-      lcd_1.print("Abra la puerta");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("para escanear");
+      lcd.print("DNI ");
+      lcd.setCursor(0,1);
+      lcd.print("no encontrado");
       break;
     case 8:
-      lcd_1.print("Colocar producto");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("debajo del escaner");
+      lcd.print("Cierre la puerta");
       break;
     case 9:
-      lcd_1.print("Producto no"); // encontrado, pero si el producto es reciclable tirelo en un tacho verde!");
-      lcd_1.setCursor(0,1);
-      lcd_1.print("registrado");
+      lcd.print("Se quedó"); // encontrado, pero si el producto es reciclable tirelo en un tacho verde!");
+      lcd.setCursor(0,1);
+      lcd.print("sin tiempo");
       break;
     case 10:
-      lcd_1.print("Cargando...");
+      lcd.print("Cargando...");
       break;
+    case 11:
+      lcd.print("Producto no"); 
+      lcd.setCursor(0,1);
+      lcd.print("encontrado");
+      break;
+    case 12:
+      lcd.print("ERROR 500");
+      break;      
     default:
-      lcd_1.print("Se acredito:");
-      lcd_1.setCursor(0,1);
-      lcd_1.print(numero);
+      lcd.print("Se acreditaron");
+      lcd.setCursor(0,1);
+      lcd.print(numero + " puntos");
       break;
   }
 }
 
-/* checked */
-
-//-----------------------------------------ESCANEAR DNI---------------------------------------------------------
-
-String scannerDNI() 
-{
-  scanner.clear_buffer();
-  String cadena = "";
-  while (cadena.length() < 10) 
-  {
-    delay(700);
-    scanner.scan_once();
-    cadena = scanner.get_info();
-    if(cadena.length() > 1)
-      Serial.println(cadena);
-
-  }
-  lcd_1.clear();
-  delay(750);
-  cadena = cadena.substring(7);
-  String delimitador = "@";
-  int inicio = 0;
-  int fin = cadena.indexOf(delimitador);
-  std::vector<String> tokens;
-  delay(250);
-
-  if (fin < 4)
-    return "-1"; // *  (Valor escaneado no válido, menos de 5 índices)
-
-  while (fin != -1) 
-  {
-    String token = cadena.substring(inicio, fin);
-    tokens.push_back(token);
-    inicio = fin + delimitador.length();
-    fin = cadena.indexOf(delimitador, inicio);
-  }
-  String token = cadena.substring(inicio);  // Agrega el último token al vector/lista tokens
-  tokens.push_back(token);
-  delay(250);
-  return tokens[4];  // Imprime el DNI (quinta posición)
+void trampilla(){
+  SERVOMOTOR.write(100);
+  delay(1000);
+  SERVOMOTOR.write(0);
+  delay(1000);
 }
-  /* checked */
-
-//-----------------------------------------ESCANEAR PRODUCTO---------------------------------------------------------
 
 String scannerProducto() {
+  
+  msj_lcd(4);
+  delay(1500);
   tiempoInicio = millis();
   String producto = "";
 
@@ -153,255 +147,203 @@ String scannerProducto() {
     delay(500);
 
     if (tiempoTranscurrido >= duracion) {
+      msj_lcd(9); // esto indica que se quedo sin tiempo
+      delay(1000);
       Serial.println("Se quedó sin tiempo!");
       return "-1";  // Se quedó sin tiempo
     }
 
-    if (digitalRead(sensor_magnetico) == LOW) {
+    if (digitalRead(SENSOR_MAGNETICO) == LOW) {
+      msj_lcd(5); // esto indica que esta escaneando
       delay(250);
       scanner.scan_once();
       producto = scanner.get_info();
       delay(1000);
-      Serial.println(producto);
+      producto = modificadorCadena(producto);
 
-      delay(200);
-      producto = producto.substring(7);
-      if (producto.length() - 1 == 13) {
+      if (producto.length() > 12) {
         return producto;
       }
-    } else {
+    } 
+    else {
+      msj_lcd(8); // Esto indica que cierre la puerta
       Serial.println("CIERRE LA PUERTA!");
     }
   }
 }
 
-/* checked */
-
-int consultaScanner(String producto, String dni) // En el caso que numero sea 1, se lee si el dni esta en la db y la var String dni no se usa para la función
+String consultaProducto(String dni, String producto)
 {
   HTTPClient http;
-  String valor_escaneado = "code_bar=" + producto + "&user_dni=" + dni;
-  http.begin("http://192.168.43.161/consulta_scanner.php?"); // Aca va la pagina a la que se conecta
-  http.addHeader("Content-Type", "application/x-www-form-urlencoded"); // Se prepara el header (esto no se toca)
-  int respuesta_consulta = obtenerRespuestaDeServer(&http, valor_escaneado);
-  http.end();
-  return respuesta_consulta;
-}
+  String datosEnviar = "user_dni=" + dni + "&code_bar=" + producto;
 
+  http.begin("https://tacherweb.000webhostapp.com/consulta_scanner.php");      
+  http.addHeader("Content-Type", "application/x-www-form-urlencoded"); 
 
-int query_barcode(String producto, String dni)
-{
-  if (producto != "-1")
-  {
-    int retorno_query_scanner = consultaScanner(producto, dni); // Hace la consulta en el PHP, se le manda un 1 indicando que es para el DNI
-    if (retorno_query_scanner == 0)
-    {
-      Serial.println("No se encontro al producto (lcd 9)");
-      mensaje_LCD(9);
-      delay(3000);
+  int codigo_respuesta = http.POST(datosEnviar);   
+
+  if(codigo_respuesta>0){
+    Serial.println("Código HTTP ► " + String(codigo_respuesta));   
+
+    if(codigo_respuesta == 200){
+      String cuerpo_respuesta = http.getString();
+      Serial.println("El servidor respondió ▼ ");
+      Serial.println("Puntos: "+ cuerpo_respuesta);
+      return cuerpo_respuesta;
     }
-    else if (retorno_query_scanner > 0) // el valor en puntos tiene que ser mayor a 0, ejemplo 1 punto por una botella
-    {
-      Serial.println("Se leyo el producto correctamente");
-    }
-    else
-    {
-      Serial.println("ERRRRRROR (lcd 2)");
-      mensaje_LCD(2);
-      delay(3000);
-    }
-    Serial.println("puntos = "+ retorno_query_scanner);
-    return retorno_query_scanner;
+
+  }else{
+
+    Serial.print("Error enviando POST, código: ");
+    Serial.println(codigo_respuesta);
+    return "-1";
   }
-  else
-  {
-    Serial.println("No se escaneó un dni (lcd 2)");
-    mensaje_LCD(2);
-    delay(3000);
-  }
-}
-
-//----------------------------------------------------CONSULTA AL PHP---------------------------------------------------------------------------------------------------
-
-typedef enum{
-  // * ERROR = 0, (si retorna 0 puede ser que se haya leido bien el dni pero no esté registrado)
-  ERROR_SERVER_NO_RESPONDE = -1, // Error enviar POST. RESPUESTA DE LA WEB
-  ERROR_SERVER_RESPUESTA_INCORRECTA = -2 // Error server respondio incorrectamente
-}codigosDeErrores;
-
-
-int obtenerRespuestaDeServer(HTTPClient* http, String finDeUrl) {
-  int retorno;
-  int respuesta = http->POST(finDeUrl);
-
-  if (respuesta > 0)  // Se comprueba si el sv respondio
-  {
-    if (respuesta == 200)  // Si es igual a 200 significa que encontro
-    {
-      Serial.println("Conexion Exitosa!");
-      String retornoServer = http->getString();
-      retorno = retornoServer.toInt();
-    } else {
-      Serial.print("Error server respondio incorrectamente: ");
-      retorno = ERROR_SERVER_RESPUESTA_INCORRECTA;
-    }
-  } else {
-    Serial.print("Error enviar POST. RESPUESTA DE LA WEB:");
-    int retorno = ERROR_SERVER_NO_RESPONDE;
-  }
-  Serial.println(retorno);
-  return retorno;
-}
-
-
-//--------------------------------------------------RETORNO DNI------------------------------------------------------------------------------------------------------
-
-
-int consultaDNI(String dni)  // En el caso que numero sea 1, se lee si el dni esta en la db y la var String dni no se usa para la función
-{
-  int respuesta_consulta;
-  HTTPClient http;
-  String valor_escaneado = "user_dni=" + dni;
-
-  http.begin("http://192.168.43.161/consulta_dni.php?");         //  Aca va la pagina a la que se conecta
-  http.addHeader("Content-Type", "application/x-www-form-urlencoded");  //  Se prepara el header (esto no se toca)
-
-  respuesta_consulta = obtenerRespuestaDeServer(&http, valor_escaneado);
   http.end();
 
-  return respuesta_consulta;
 }
 
-int query_dni(String dni)
-{
-  if (dni != "-1")
-  {
-    int retorno_query_dni = consultaDNI(dni); // Hace la consulta en el PHP, se le manda un 1 indicando que es para el DNI
-    if (retorno_query_dni == 0)
-    {
-      Serial.println("No se encontro dni (lcd 3)");
-      mensaje_LCD(3);
-      delay(3000);
-    }
-    else
-      if (retorno_query_dni == 1)
-      {
-        Serial.println("Se leyo el dni correctamente");
-      }
-    else
-    {
-      Serial.println("ERRRRRROR (lcd 2)");
-      mensaje_LCD(2);
-      delay(3000);
-    }
-    return retorno_query_dni;
+String obtenerDNI(String str){
+
+  String delimitador = "@";
+  int inicio = 0;
+  int fin = str.indexOf(delimitador);
+  std::vector<String> tokens;
+
+  if (fin < 4)
+    return "-1";
+
+  while (fin != -1) {
+    String token = str.substring(inicio, fin);
+    tokens.push_back(token);
+
+    inicio = fin + delimitador.length();
+    fin = str.indexOf(delimitador, inicio);
   }
-  else
-  {
-    Serial.println("No se escaneó un dni (lcd 2)");
-    mensaje_LCD(2);
-    delay(3000);
-  }
+
+  String token = str.substring(inicio);// Agrega el último token al vector/lista tokens
+  tokens.push_back(token);
+  delay(250);
+  // Imprime el DNI (quinta posición)
+  return tokens[4];
+
 }
 
+String funcionDNI(){
+  while(true){
 
-// --------------------------------------------------------TRAMPILLA------------------------------------------------------------------
-
-void trampilla(){
-  Serial.println("(Se abren las compuertas)");
-  SERVOMOTOR.write(78);
-  delay(500);
-  SERVOMOTOR.write(0);
-  delay(2500);
-}
-
-// -------------------------------------------------------SETUP------------------------------------------------------------------
-
-void setup() {
-
-  pinMode(sensor_magnetico, INPUT_PULLUP);
-
-  //-------------------------------------SCANNER---------------------------------------------------
-  delay(10);
-  Serial.begin(115200);  // Se inicializa el puerto serial para la depuracion
-  delay(100);
-
-  mySerial.begin(9600);
-
-  scanner.init();
-  Serial.println("initialize the scanner...");
-  Serial.println("enable the setting QR code");
-  scanner.enable_setting_code();
-
-  scanner.set_working_mode(1);
-
-  //-------------------------------------WIFI CONEXION----------------------------------------------
-  // Conexion a la red Wi-Fi
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.println("Conectandose a WiFi...");
-  }
-  Serial.println("Conexion exitosa a WiFi ");
-  Serial.println(WiFi.localIP());
-
-  //--------------------------------------SERVO-------------------------------------------------
-  SERVOMOTOR.attach(PINSERVO);
-  //trampilla(); 
-  SERVOMOTOR.write(0);
-  delay(3000);
-  //---------------------------------------LCD----------------------
-  lcd_1.begin(16, 2); 
-  lcd_1.clear();
-  mensaje_LCD(10);
- }
-
-void loop()
-{
-  scanner.clear_buffer();
-  mensaje_LCD(1);
-  String dni = "";
-  dni = scannerDNI();
-  Serial.println("Esto es el dni: " + dni);
-  int retorno_sv = query_dni(dni); // Hace la consulta en el PHP, se le manda un 1 indicando que es para el DNI
-  if (retorno_sv == 1)
-  // Si la consulta fue exitosa, va a poder ingresar los productos. Esto es el retorno del dni
-  {
-    mensaje_LCD(7); // si la puerta esta cerrada, espera a que se abra
-    if (digitalRead(sensor_magnetico) == HIGH)
-    {
-      mensaje_LCD(4);
-      // una vez que se abre, el usuario deberia ingresar productos (ya deberia estar abierta luego de escanear el dni)
-      while (digitalRead(sensor_magnetico) == HIGH)
-      // hasta que no la cierre:
-      {
-      
-      // se le indica al usuario que ingrese productos y luego la cierre
-      if (digitalRead(sensor_magnetico) == LOW) 
-        break; // si al cierra se sale del while para escanear el barcode (linea 285)
-      }
-    }
-    mensaje_LCD(10);
+  msj_lcd(2); // esto indica que se tiene que escanear el dni de forma horizontal
+  
+  if(digitalRead(SENSOR_MAGNETICO) == HIGH){
+  
+    msj_lcd(5); // esto indica que se esta escaneando algo
+  
+    String dni = "";
     delay(1000);
-    String producto = scannerProducto(); // ESTO NO SE MODIFICA
-    Serial.println("Esto es el producto: " + producto);
-    int retorno_sv = query_barcode(producto, dni); // Compara el resultado de la consulta para saber si es un producto registrado
-    if (retorno_sv > 1)
-    {
-      trampilla(); // Se abre la trampilla
-      Serial.println("Puntos acreditados: " + retorno_sv);
-      mensaje_LCD(retorno_sv);
+    scanner.scan_once();
+    dni = scanner.get_info();
+    Serial.println(dni);
+    if (dni.indexOf("@") > 0){
+      dni = obtenerDNI(dni);
+      return dni;
+      }
+    dni = modificadorCadena(dni);
+    Serial.println(dni);
+    if (dni.length() == 8)    
+      return dni;
+    }
+    delay(500);
+  }
+}  
+
+
+String modificadorCadena(String str){
+  String strNuevo = "";
+  for (int i = 0; i < str.length(); i++) {
+    char c = str.charAt(i);
+    
+    // Verificar si el carácter es un dígito
+    if (isDigit(c)) {
+      strNuevo += c;
+    }
+  }
+
+  if (strNuevo.startsWith("31")) {
+    strNuevo = strNuevo.substring(2); 
+  }
+
+  if (strNuevo.endsWith("31")) {
+    strNuevo = strNuevo.substring(0, strNuevo.length() - 2); 
+  }
+  return strNuevo;
+}
+
+String consultaDNI(String dni){
+  HTTPClient http;
+  String datosEnviar = "user_dni=" + dni;
+
+  http.begin("https://tacherweb.000webhostapp.com/consulta_dni.php");      
+  http.addHeader("Content-Type", "application/x-www-form-urlencoded"); 
+
+  int codigo_respuesta = http.POST(datosEnviar);   
+
+  if(codigo_respuesta>0){
+    Serial.println("Código HTTP ► " + String(codigo_respuesta));   
+
+    if(codigo_respuesta == 200){
+      String cuerpo_respuesta = http.getString();
+      Serial.println("El servidor respondió ▼ ");
+      Serial.println(cuerpo_respuesta);
+      return cuerpo_respuesta;
+    }
+
+  }else{
+
+    Serial.print("Error enviando POST, código: ");
+    Serial.println(codigo_respuesta);
+    return "-1";
+  }
+
+
+  http.end();
+}
+
+void loop(){
+  String dni = funcionDNI();
+  Serial.println(dni);
+  msj_lcd(10); // esto indica qye esta cargando
+  delay(1000);
+  if (consultaDNI(dni) == "1"){ // Significa que encontro el dni en la base de datos
+    Serial.println("Se encontro el dni");
+    msj_lcd(3); // esto indica que se leyo el dni correctamente
+    delay(1000);
+
+    String producto = scannerProducto();
+    Serial.println(producto);
+
+    String valorPuntaje = consultaProducto(dni, producto);
+
+    if (valorPuntaje.toInt() > 0){
+      Serial.println("Su puntaje es de :" + valorPuntaje);
+
+      msj_lcd(valorPuntaje.toInt()); // esto indica que se acreditaron los puntos y los muestra por pantalla
+      trampilla();
+      delay(3000);
+
+    }
+    else if (valorPuntaje.toInt() == 0){
+      Serial.println("No se encontro el producto en la base de datos");
+      msj_lcd(11);
       delay(3000);
     }
-    else
-    {
-      mensaje_LCD(9); // Printear que escaneo un codigo de barras que no se encuentra en la db
+    else{
+      Serial.println("ERROR");
+      msj_lcd(12);
       delay(3000);
     }
   }
-  else
-  {
-    mensaje_LCD(3); // printearle por el LCD que no se encontro un dni
+  else{
+    Serial.println("No encontro el dni");
+    msj_lcd(7);
     delay(3000);
   }
 }
