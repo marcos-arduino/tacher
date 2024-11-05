@@ -83,7 +83,7 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
     </div>
 
     <script>
-        var dni = "47961058"; /* CONSULTA DNI PHP  */
+         var dni = "<?php echo $data_usuario[0]['dni']; ?>"; /* CONSULTA DNI PHP  */
     </script>
     
     <!-- BOTON APARICION QR -->
