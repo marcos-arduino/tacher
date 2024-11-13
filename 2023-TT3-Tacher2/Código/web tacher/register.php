@@ -22,7 +22,7 @@
     <title>Tacher2</title>
 </head>
 
-<body class="sub-body">
+<body>
     <header>
         <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -57,16 +57,16 @@
     <div class="container  centrar2">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <?php if (isset($_GET["rgt"]) and $_GET["rgt"] == "1") { ?>
-                    <script>
-                        alert("El usuario se registró correctamente. A continuación podrá iniciar sesión...");
-                        location.href = 'login.php';
-                    </script>
-                <?php } else if (isset($_GET["rgt"]) and $_GET["rgt"] == "0") { ?>
-                    <script>
-                        alert("El usuario no se pudo registrar correctamente.");
-                    </script>
-                <?php } ?>
+                    <!-- <?php if (isset($_GET["rgt"]) and $_GET["rgt"] == "1") { ?>
+                        <script>
+                            alert("El usuario se registró correctamente. A continuación podrá iniciar sesión...");
+                            location.href = 'login.php';
+                        </script>
+                    <?php } else if (isset($_GET["rgt"]) and $_GET["rgt"] == "0") { ?>
+                        <script>
+                            alert("El usuario no se pudo registrar correctamente.");
+                        </script>
+                    <?php } ?> -->
 
                 <form id="form" method="POST" action="registroCTRL.php">
                     <div class="mb-3">
@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
+    <footer>
         <div class="fluid-container black div-footer-tacher">
             <div class="row g-0 d-flex">
                 <div class="col-4 offset-1 py-2 pb-2 d-none d-md-block">
@@ -129,19 +129,6 @@
                 </div>
             </div>
             <div class="col-10 offset-1 py-2 pb-0 text-center small">Tacher © 2023 | All rights reserved.</div>
-            <div class="col-12">
-                <ul class="nav text-center mt-1 justify-content-center small">
-                    <li>
-                        <a href="index.html" class="nav-link px-2 footer_text">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="index.html#sobre-nosotros" class="nav-link px-2 footer_text">Sobre Nosotros</a>
-                    </li>
-                    <li>
-                        <a href="index.html#contacto" class="nav-link px-2 footer_text">Contacto</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </footer>
 
