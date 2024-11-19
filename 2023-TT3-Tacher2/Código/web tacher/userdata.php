@@ -32,7 +32,7 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
     <title>Tacher</title>   
 </head>
 
-<body class="sub-body">
+<body>
     <header>
         <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -103,8 +103,8 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
         <label for="btn-modal" class="cerrar-modal"></label>
     </div>
 
-    <footer class="footer">
-        <div class="fluid-container black div-footer-tacher">
+    <footer>
+        <div class="fluid-container black ">
             <div class="row g-0 d-flex">
                 <div class="col-4 offset-1 py-2 pb-2 d-none d-md-block">
                     <img src="img/logo_tacher.png" alt="Logo" height="40vh" />
@@ -141,7 +141,6 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
                             </a>
                         </div>
                     </div>
-                
                         <a href="tel:+5491165742379" class="text-black footer-palabras">+54 9 11 6574-2379</a>
                         <a href="mailto:tacher2consultas@gmail.com" class="text-black footer-palabras">
                             <h5 class="mailtext">tacher2consultas@gmail.com</h5>
@@ -149,19 +148,6 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
                 </div>
             </div>
             <div class="col-10 offset-1 py-2 pb-0 text-center small">Tacher © 2023 | All rights reserved.</div>
-            <div class="col-12">
-                <ul class="nav text-center mt-1 justify-content-center small">
-                    <li>
-                        <a href="index.html" class="nav-link px-2 footer_text">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="index.html#sobre-nosotros" class="nav-link px-2 footer_text">Sobre Nosotros</a>
-                    </li>
-                    <li>
-                        <a href="index.html#contacto" class="nav-link px-2 footer_text">Contacto</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </footer>
     <!-- SCRIPTS -->
