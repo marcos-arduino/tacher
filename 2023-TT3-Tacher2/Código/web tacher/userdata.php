@@ -81,7 +81,6 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
             </div>
         </div>
     </div>
-
     <script>
          var dni = "<?php echo $data_usuario[0]['dni']; ?>"; /* CONSULTA DNI PHP  */
     </script>

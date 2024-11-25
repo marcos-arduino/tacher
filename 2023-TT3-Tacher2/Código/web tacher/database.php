@@ -164,3 +164,4 @@ function countTotalPoints($conexion) {
     }
 }
 
+

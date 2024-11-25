@@ -1,3 +1,4 @@
+
 const codigoqr = () => {
     const contenedorQR = document.getElementById('contenedorQR');
 
