@@ -1,23 +1,17 @@
 <?php
 function conexion() // definimos la funcion que va a devolver el objeto para realizar consultas
 {
-    try{
-        $conexion = new PDO('mysql:host=localhost;port=3306;dbname=id22134803_db_test', 'id22134803_tacher_test', 'Tacher_123');
-        return $conexion;
-    } catch(PDOException $error) {
-        echo -1;
+    try {
+        $conexion = new PDO("mysql:host=localhost;port=3306;dbname=id21247720_tacher_db", "root", "");
+        // este es el caso en que la conexion se esté haciendo para xampp porque requiere otros parametros
+    } catch (PDOException) {
+        $conexion = new PDO("mysql:host=sql106.byetcluster.com;port=3306;dbname=if0_35180481_tacher2", "if0_35180481", "o1nd3sUOIdKM6a");
+        // esta conexion se realizará cuando se esté hosteando para 'www.tacher2.000.pe' en infinityfree
+    } finally {
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        return $conexion; // se retorna el objeto para poder usarlo en las diferentes funciones que ejecutan sentencias sql
     }
-//    try {
-//        $conexion = new PDO("mysql:host=localhost;port=3306;dbname=id21247720_tacher_db", "root", "");
-//        // este es el caso en que la conexion se esté haciendo para xampp porque requiere otros parametros
-//    } catch (PDOException) {
-//       $conexion = new PDO("mysql:host=sql106.byetcluster.com;port=3306;dbname=if0_35180481_tacher2", "if0_35180481", "o1nd3sUOIdKM6a");
-//       // esta conexion se realizará cuando se esté hosteando para 'www.tacher2.000.pe' en infinityfree
-//    } finally {
-//        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-//        return $conexion; // se retorna el objeto para poder usarlo en las diferentes funciones que ejecutan sentencias sql
-//    }
 }
 function registro($dni, $nombre, $conexion) // se define la funcion capaz de registrar usuarios a la db
 {
@@ -88,6 +82,8 @@ function userData($dni, $conexion) // definimos la funcion que devuelve los dato
     }
     try {
         $pdo = $conexion->prepare('SELECT Rank FROM (SELECT *, RANK() OVER(ORDER BY puntos DESC) as Rank FROM puntos_usuarios) AS Subquery WHERE dni_usuario = ?');
+
+        
         // sentencia sql que consulta el ranking de usuarios y el correspondiente al usuario solicitado, mediante una subconsulta se obtiene el orden que le da el ranking en base a los puntos
         $pdo->bindParam(1, $dni);  // le damos el valor de la variable $dni que se pasó como parametro al llamar la funcion
         $pdo->execute(); // se ejecuta la consulta
@@ -107,11 +103,9 @@ function consultaScanner($producto, $dni, $conexion)
         $resultado = $pdo->fetchAll(PDO::FETCH_ASSOC); // el resultado (con formato array) de la consulta se guarda en una variable
         if ($resultado) {
             registrarPuntos($resultado[0]['valor_puntos'], $dni, $conexion); // se utiliza el resultado de la consulta ($resultado[0]['valor_puntos']) para asignarle los puntos al usuario mediante la funcion 'registrarPuntos()''
-            deposito($producto, $dni, $conexion);
             return $resultado[0]['valor_puntos']; // se retonra le valor de los puntos para que el codigo de arduino de la placa ESP32 sepa cuantos puntos se le asignaron al usuarioaaa
         } else {
-             registrarProducto($producto, $conexion);
-             consultaScanner($producto, $dni, $conexion);
+            return 0; // en caso de que no haya habido resultado positivo en la consulta (es decir, no se encontró un producto registrado coincidente con el codigo de barras que envió el codigo de arduino), se retorna un '0' para indicarle el resultado de la consulta al arduino
         }
     } catch (PDOException $error) {
         echo $error->getMessage();
@@ -131,25 +125,43 @@ function registrarPuntos($puntos, $dni, $conexion) // esta funcion se encarga de
     }
 }
 
-function deposito($producto, $dni, $conexion){
+/* HUMO DEL INGERNIEROOOOOOOOOOOOOOOO */
+
+function countUsers($conexion) // definimos la función para contar la cantidad de usuarios en la base de datos
+{
     try {
-        $pdo = $conexion->prepare('INSERT INTO registro_deposito VALUES (NULL, ?, ?, now())');
-        $pdo->bindParam(1, $dni);
-        $pdo->bindParam(2, $producto);
+        $pdo = $conexion->prepare('SELECT COUNT(*) as total FROM usuarios'); // sentencia SQL para contar el número de usuarios
+        $pdo->execute() or die(print($pdo->errorInfo())); // ejecutamos la consulta y si hay un error se imprime la información del error
+        $resultado = $pdo->fetch(PDO::FETCH_ASSOC); // obtenemos el resultado de la consulta
+        return $resultado['total']; // retornamos la cantidad de usuarios
+    } catch (PDOException $error) {
+        echo $error->getMessage(); // en caso de error, mostramos el mensaje de error
+        die(); // terminamos la ejecución
+    }
+}
+
+function countProducts($conexion) {
+    try {
+        $pdo = $conexion->prepare('SELECT COUNT(*) as total FROM productos');
         $pdo->execute() or die(print($pdo->errorInfo()));
+        $resultado = $pdo->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'];
     } catch (PDOException $error) {
         echo $error->getMessage();
         die();
     }
 }
 
-function registrarProducto($producto, $conexion){
-    try{
-        $pdo = $conexion->prepare('INSERT INTO productos VALUES (?, NULL, 1)');
-        $pdo->bindParam(1, $producto);
+function countTotalPoints($conexion) {
+    try {
+        $pdo = $conexion->prepare('SELECT SUM(puntos) as total FROM puntos_usuarios');
         $pdo->execute() or die(print($pdo->errorInfo()));
+        $resultado = $pdo->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'];
     } catch (PDOException $error) {
         echo $error->getMessage();
         die();
     }
 }
+
+

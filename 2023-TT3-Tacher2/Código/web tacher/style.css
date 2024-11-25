@@ -3,15 +3,19 @@
 .colorcfeff0 {
     color: #cfeff0;
 }
+
 .colore1dece {
     color: #e1dece;
 }
+
 .colora9ccb1 {
     color: #a9ccb1;
 }
+
 .color9ebb9c {
     color: #9ebb9c;
 }
+
 .color59766b {
     color: #59766b;
 }
@@ -19,46 +23,57 @@
 /* ---------------------------body------------------------------ */
 
 body {
-    background-color: #708679;
-    font-family: "Poppins", sans-serif;
+    font-family: "Lexend", sans-serif;
     border: none;
-    background-image: url("img/fondo_index2.jpg");
-    background-size: cover;
+    background-image: url(./img/Orange\ Coral.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
-    position: relative;
-    padding-bottom: 22em;
     min-height: 100vh;
 }
 
-.sub-body{
+.sub-body {
     padding-bottom: 31em;
 }
 
 /* ----------------------------header-------------------------------- */
 .div-header {
-    background-color: #708679;
+    background-color: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(20px);
 }
+
 .header_text {
     color: white;
 }
+
 .header_text:hover {
-    color: #cfeff0;
+    color: gray;
 }
+
 .header_buttoms {
     color: white;
     border: none;
-    background-color: #708679;
+    backdrop-filter: blur(10px);
 }
 
 .logo-tacher {
     height: 50px;
 }
 
-.elem-nav-i-f-sn:hover {
-    background-color: white;
+.navbarbutons {
+    margin: 0px !important;
+}
+
+.burga-item:hover {
+    background-color: #9ebb9c;
     color: black;
-    border-radius: 4px;
+}
+
+.elem-nav-i-f-sn:hover {
+    background-color: rgba(255, 255, 255, 0.501);
+    color: black;
+    border-radius: 15px;
+    transition: 1000ms;
 }
 
 .elem-nav-i-f-sn:hover .header_text {
@@ -68,6 +83,8 @@ body {
 .header_buttoms:hover {
     background-color: rgba(255, 255, 255, 0.501);
     color: black;
+    transition: 800ms;
+
 }
 
 .header_buttoms:hover .header_buttoms {
@@ -83,6 +100,11 @@ body {
     color: #ffff;
 }
 
+.logo-tacher-header:hover {
+    transform: rotate(90deg);
+    transition: 2000ms;
+}
+
 /* ---------------------------------------body------------------------------------- */
 .icon {
     display: inline-block;
@@ -93,21 +115,307 @@ body {
     fill: currentColor;
 }
 
+/* #PRINCIPIO{
+    background-image: url(./img/Orange\ Coral.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
 .form-label {
     color: white;
 }
-.centrar{
+
+.centrar {
     margin-top: 150px;
 }
-.centrar2{
+
+.centrar2 {
     margin-top: 125px;
 }
+
+.text-body-emphasis {
+    color: white !important;
+}
+
+.presentacion-tacher {
+    color: white;
+    margin: 0% 20%;
+    padding: 100px 0px 50px 0px;
+}
+
+.sector-app {
+    justify-content: center;
+}
+
+.pechland2 {
+    padding: 200px;
+}
+
+@media (max-width: 1199px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 660px;
+    }
+
+    .contenido-app .u-text-2 {
+        margin-right: 114px;
+    }
+}
+
+@media (max-width: 991px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 506px;
+    }
+
+    .contenido-app .u-text-2 {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 380px;
+    }
+}
+
+@media (max-width: 575px) {
+    .contenido-app .u-sheet-1 {
+        min-height: 239px;
+    }
+}
+
+/* -------------------------------------objetivos----------------------------------------- */
+.fondo {
+    padding-bottom: 30px;
+}
+
+.banner-publi {
+    background-color: rgba(255, 255, 255, 0.084);
+    background-color: transparent;
+    border: none;
+}
+
+.objetivos-title {
+    padding: 15px;
+    color: white;
+}
+
+.objetivosbox {
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+}
+
+.objetivosbox:hover {
+    background-color: rgba(255, 255, 255, 0.501);
+    transform: scale(1.05);
+    transition: all 0.5s;
+    color: black;
+
+    .objetivos-registrarse {
+        color: black;
+    }
+}
+
+.direcciones {
+    color: black;
+    text-decoration: none;
+}
+
+.objetivos-registrarse {
+    color: white;
+}
+
+/* ---------------------------DEVELOPERS/TESTIMONIALS------------------------- */
+
+.div-Testimonios {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    color: white;
+}
+
+.tamano-circulo {
+    width: 80px;
+    height: 80px;
+}
+
+.margen-desarrolladores {
+    margin-bottom: 20px;
+}
+
+.texto-devs {
+    color: white;
+}
+
+/* ----------------------------FOOTER--------------------------- */
+.texto-item-footer {
+
+    color: white;
+}
+
+.texto-item-footer-derechos {
+    color: white;
+}
+
+.texto-item-footer:hover {
+
+    color: grey;
+}
+
+.div-footer-tacher {
+    background-color: rgba(255, 255, 255, );
+    backdrop-filter: blur(20px);
+    font-size: 25px;
+    bottom: 0;
+    width: 100%;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.footer-item-tacher {
+    color: white;
+    text-decoration: none;
+
+}
+
+.footer-palabras {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-palabras:hover {
+    color: #cfeff0;
+}
+
+.footer-iconos:hover {
+    color: #cfeff0;
+}
+
+.footer_text {
+    color: black;
+}
+
+.footer_text:hover {
+    color: #cfeff0;
+}
+
+.mapa {
+    font-size: 32px;
+    color: black;
+}
+
+.facebooket {
+    font-size: 32px;
+    color: black;
+}
+
+.gmail {
+    font-size: 32px;
+    color: black;
+}
+
+.mailtext {
+    font-size: 16px;
+}
+
+.elem-footeter-tacher:hover {
+    background-color: rgba(255, 255, 255, 0.501);
+    border-radius: 4px;
+    transition: 800ms;
+    color: white;
+
+}
+
+.logo-tacher-footer:hover {
+    transform: rotate(360deg);
+    transition: 1000ms;
+}
+
+/* ----------------------------Pricing tacher--------------------------- */
+
+.items-pricing {
+    padding: 50px;
+
+}
+
+.lista-caracteristicas {
+    padding: 40px;
+
+}
+
+.caracteristica-ind {
+    padding-bottom: 20px;
+}
+
+.imagen-pricing {
+    opacity: 0%;
+
+}
+
+.contenedor-pricing:hover {
+    transform: scale(1.01);
+    transition: 500ms;
+}
+
+.u-container-layout {
+    background-color: white;
+}
+.fondo-difuminado{
+    background-image: url(./img/Orange\ Coral.jpg);
+    background-size: cover;
+    font-size: 20px;
+}
+.u-list-icon{
+    background-image: url(./img/Orange\ Coral.jpg);
+    background-size: cover;
+}
+/* ----------------------------Contactoo--------------------------- */
+
+
+
+.contacto-section {
+    padding: 10%;
+}
+
+/* ----------------------------FAQS--------------------------- */
+
+.section-FAQ {
+    padding: 0% 20%;
+}
+
+
+/* Cambia el color del texto de las preguntas a blanco */
+.u-accordion-link-text {
+    color: white !important;
+}
+
+/* Asegúrate de que los iconos de "+" también sean blancos */
+.u-accordion-link-icon {
+    color: white !important;
+}
+
+
+/* Barra de navegación principal */
+.div-header {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+    position: absolute;
+    z-index: 2000;
+    /* Valor alto para garantizar que esté delante */
+    background-color: #fff;
+    /* Asegura que tenga un fondo si el dropdown es transparente */
+}
+
+
+
 
 /* -------------------------------------QR----------------------------------------- */
 
 /* -------boton-Modal -------*/
 
-.boton-modal label{
+.boton-modal label {
     padding: 10px 15px;
     background-color: #708679;
     color: #ffff;
@@ -115,18 +423,22 @@ body {
     cursor: pointer;
     transition: all 300ms ease;
 }
-.boton-modal label{
+
+.boton-modal label {
     background-color: #708679;
 }
+
 /* Ventana modal */
-#btn-modal{
+#btn-modal {
     display: none;
 }
-.container-modal{
+
+.container-modal {
     width: 100%;
     height: 100vh;
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     background-color: rgba(7, 7, 7, 0.8);
     display: none;
     justify-content: center;
@@ -134,56 +446,66 @@ body {
     z-index: 100;
 
 }
-#btn-modal:checked ~ .container-modal{
+
+#btn-modal:checked~.container-modal {
     display: flex;
 }
-.content-modal{
+
+.content-modal {
     width: 100%;
     max-width: 400px;
     padding: 20px;
     background-color: #ffff;
     border-radius: 4px;
     display: flex;
-    
+
 }
-.content-modal h2{
+
+.content-modal h2 {
     margin-bottom: 15px;
 }
-.content-modal p{
+
+.content-modal p {
     padding: 15px 0px;
     border-top: 1px solid #dbdbdb;
     border-bottom: 1px solid #dbdbdb;
 }
-.content-modal .btn-cerrar{
+
+.content-modal .btn-cerrar {
     width: 100%;
     margin-top: 15px;
     display: flex;
     justify-content: flex-end;
 }
-.content-modal .btn-cerrar label{
+
+.content-modal .btn-cerrar label {
     padding: 7px 10px;
     background-color: #708679;
     color: #ffff;
     border-radius: 4px;
     cursor: pointer;
-    
+
     transition: all 300ms ease;
 }
-.content-modal .btn-cerrar label:hover{
+
+.content-modal .btn-cerrar label:hover {
     background-color: #0e102d;
 }
-.cerrar-modal{
+
+.cerrar-modal {
     width: 100%;
     height: 100vh;
-    position:absolute;
-    top: 0; right: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
     z-index: -1;
 }
-@media screen and (max-width:800px){
-    .content-modal{
+
+@media screen and (max-width:800px) {
+    .content-modal {
         width: 90%;
     }
-    
+
 }
 
 /* -------boton-Modal -------*/
@@ -218,7 +540,7 @@ body {
     z-index: 100;
 }
 
-#btn-modal:checked ~ .container-modal {
+#btn-modal:checked~.container-modal {
     display: flex;
 }
 
@@ -282,131 +604,681 @@ body {
 .simboloQR {
     font-size: 50px;
 }
+
 #contenedorQR {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 256px;
-    margin: auto; 
+    margin: auto;
 }
 
 .content-modal {
     width: 90%;
     max-width: 296px;
-    background-color:white;
+    background-color: white;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* -------------------------------------objetivos----------------------------------------- */
-.fondo {
-    padding-bottom: 30px;
+
+.espacio-suma {
+
+    padding-left: 320px;
+
 }
 
-.banner-publi {
-    background-color: rgba(255, 255, 255, 0.084);
+.espacio-suma-1 {
+    padding-left: 217px;
+
+}
+
+.espacio-suma-2 {
+    padding-left: 205px;
+
+}
+
+
+
+
+
+.preguntasfre {
+    padding: 100px;
+    background-image: url(./img/fondo-iniciar-sesion.jpg);
+}
+
+
+.preguntasfre {
     background-color: transparent;
-    border: none;
-}
-
-.objetivos-title {
-    padding: 15px;
+    /* Cambia este color al que desees para el fondo */
     color: white;
-}
-
-.objetivosbox {
+    /* Estilo general para los textos */
     padding: 20px;
-    color: white;
     border-radius: 8px;
+    /* Opcional: bordes redondeados */
 }
 
-.objetivosbox:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.05);
-    transition: all 0.5s;
-    color: black;
-    .objetivos-registrarse {
-        color: black;
-    }
+.accordion-button {
+    background-color: transparent;
+    /* Fondo transparente para los botones */
+    color: white;
+    /* Texto blanco para los botones */
+    border: none;
+    /* Elimina los bordes si no los deseas */
 }
 
-.direcciones {
-    color: black;
-    text-decoration: none;
-}
-
-.objetivos-registrarse {
+.accordion-button:not(.collapsed) {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Fondo sutil al expandir */
     color: white;
 }
 
-/* ---------------------------DEVELOPERS/TESTIMONIALS------------------------- */
-
-.div-Testimonios {
-    padding-top: 40px;
-    padding-bottom: 80px;
+.accordion-body {
+    background-color: transparent;
+    /* Fondo transparente para el contenido */
     color: white;
+    /* Texto blanco */
 }
-.tamano-circulo {
-    width: 80px;
-    height: 80px;
+
+.accordion-item {
+    background-color: transparent;
+    /* Fondo transparente para el acordeón */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde claro */
+    margin-bottom: 10px;
+    /* Espaciado entre elementos */
 }
-.margen-desarrolladores {
+
+
+
+.accordion-button::after {
+    color: white;
+    /* Cambiar color de las flechas a blanco */
+    transition: none;
+    /* Eliminar animaciones de color */
+}
+
+.accordion-button:not(.collapsed)::after {
+    color: white;
+    /* Flecha blanca también cuando el acordeón está expandido */
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    /* Eliminar el borde azul al hacer foco */
+    outline: none;
+    /* Quitar contorno predeterminado */
+}
+
+.accordion-button:hover {
+    background-color: transparent;
+    /* Evitar cambios de fondo al pasar el mouse */
+    color: white;
+    /* Asegurar que el texto siga siendo blanco */
+}
+
+.accordion-item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Bordes claros */
+}
+
+
+
+/* Titles */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+    /* Color principal */
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #666;
+    /* Color secundario */
+}
+
+/* Stats Container */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Stat Item */
+.stat-item {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Stat Content */
+.stat-content {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+
+
+#id_Pricing {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2c6e2f;
+    /* Verde oscuro */
+    margin-bottom: 10px;
+}
+
+.u-text-2 {
+    font-size: 1.2rem;
+    color: #4d4d4d;
+    /* Gris claro */
+    margin-bottom: 30px;
+}
+
+/* Contenedores de los precios */
+.contenedor-pricing {
+    background-color: white;
+    /* Fondo blanco */
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    overflow: hidden;
+    margin: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor-pricing:hover {
+    transform: translateY(-10px);
+    /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón "Saber más" */
+.u-btn {
+    background-color: #2c6e2f;
+    /* Verde oscuro */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.u-btn:hover {
+    background-color: #1f4d1a;
+    /* Verde más oscuro al pasar el mouse */
+}
+
+.u-btn-1,
+.u-btn-2,
+.u-btn-3 {
+    margin-top: 10px;
+}
+
+/* Enlaces y botones con icono */
+.u-file-icon u-icon {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.u-btn-round {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos de los grupos y las características */
+.u-group {
+    background-color: #2c6e2f;
+    /* Fondo verde */
+    border-radius: 20px 20px 0 0;
+    padding: 15px;
     margin-bottom: 20px;
 }
 
-.texto-devs {
+.u-group-1,
+.u-group-2,
+.u-group-3 {
+    background-color: #1f4d1a;
+    /* Verde más oscuro */
+}
+
+.lista-caracteristicas {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.caracteristica-ind {
+    margin-bottom: 10px;
+    color: #4d4d4d;
+    /* Gris oscuro para las características */
+}
+
+.caracteristica-ind .u-list-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilo para la lista de características */
+.lista-caracteristicas li {
+    font-size: 1rem;
+    color: #333;
+    /* Texto oscuro */
+}
+
+.lista-caracteristicas .caracteristica-ind {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.lista-caracteristicas .caracteristica-ind div {
+    background-color: #2c6e2f;
+    /* Icono verde */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Fondo alternativo para la sección */
+.u-section-4 {
+    background-color: #f4f4f4;
+    /* Gris claro */
+    padding: 50px 0;
+}
+
+.u-repeater-1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Ajustes para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .u-text-1 {
+        font-size: 2rem;
+    }
+
+    .contenedor-pricing {
+        width: 100%;
+    }
+
+    .u-repeater-1 {
+        flex-direction: column;
+    }
+}
+
+
+
+
+.card-encabezado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2c6e2f;
     color: white;
+    border-radius: 15px 15px 0 0; /* Solo las esquinas superiores */
+    padding-top: 10px;
+
+
 }
 
-/* ----------------------------FOOTER--------------------------- */
+.margen-card {
 
-.div-footer-tacher {
-    background-color: #708679;
-    font-size: 25px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    margin: 30px;
+
+
+
 }
 
-.footer-palabras {
-    color: black;
+
+.pricing-titulo {
+
+    margin: 2%;
+    margin-top: 4%;
+   
+}
+
+
+.texto-info {
+
+    color: white;
+    margin-top: 2%;
+}
+
+
+
+.titulo-margen {
+    margin-bottom: 2%;
+}
+
+.pricing-sec {
+    margin-bottom: 100px;
+}
+
+
+.imagen-tacher-mostrando{
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+.carousel-fotos{
+    margin: 10%;
+}
+
+
+
+.achicar-flecha{
+
+    width: 20px;
+    height: 20px;
+}
+
+.no-linea{
     text-decoration: none;
 }
 
-.footer-palabras:hover {
-    color: #cfeff0;
+
+.tarjeta-pricing{
+
+    border-radius: 20px;
 }
 
-.footer-iconos:hover {
-    color: #cfeff0;
+
+
+
+
+/* Contenedor general */
+.contacto-section {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    gap: 20px;
 }
 
-.footer_text {
-    color: black;
+/* Información de contacto */
+.contact-info {
+    text-align: center;
+    padding: 10px;
+    
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer_text:hover {
-    color: #cfeff0;
+.contact-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 15px;
 }
 
-.mapa {
-    font-size: 32px;
-    color: black;
+.contact-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
 }
 
-.facebooket {
-    font-size: 32px;
-    color: black;
+/* ----------------- General ----------------- */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
 }
-.gmail {
-    font-size: 32px;
-    color: black;
+
+/* Encabezado: Logo e Imagen */
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
 }
-.mailtext{
+
+.logo-container {
+    flex: 0 0 150px; /* Tamaño fijo para el logo */
+    display: flex;
+    justify-content: center;
+}
+
+.image-container {
+    flex: 1; /* Imagen ocupa el resto del espacio */
+}
+
+.contact-logo {
+    width: 150px;
+    height: auto;
+}
+
+.school-image {
+    max-width: 1280px;
+    max-height: 720px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Información de texto */
+.info-container {
+    text-align: center;
+    padding: 20px 10px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    .school-image {
+        max-width: 100%;
+    }
+
+    .contact-form-container {
+        padding: 20px;
+    }
+}
+
+
+
+
+/* Contenedor del formulario */
+.contact-form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeaea;
+}
+
+/* Título del formulario */
+.contact-form-container h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color:  #1f4d1a;
+    font-weight: bold;
+}
+
+/* Estilos del formulario */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Grupos del formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etiquetas */
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Campos de entrada */
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    background-color: #fdfdfd;
+    transition: border-color 0.3s ease;
+}
+
+/* Campos en foco */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Botón de envío */
+.btn-submit {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Adaptabilidad */
+@media (max-width: 768px) {
+    .contact-form-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .contact-form-container h4 {
+        font-size: 20px;
+    }
+
+    .btn-submit {
+        font-size: 14px;
+    }
+}
+
+.centrar-contacto-titulo{
+
+    color: #1f4d1a;
+}
+
+.centrar-carusel{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.accordion-button {
+    background-color: #ffffff !important; /* Fondo blanco */
+    color: #333 !important; /* Color del texto para visibilidad */
+    border: 1px solid #ddd; /* Añadimos un borde para distinguir */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animación */
+}
+
+/* Hover del botón */
+.accordion-button:hover {
+    background-color: #f2f2f2 !important; /* Gris claro al pasar el cursor */
+    color: #000 !important; /* Texto ligeramente más oscuro */
+}
+
+/* Botón cuando está colapsado */
+.accordion-button.collapsed {
+    background-color: #ffffff !important; /* Fondo blanco */
+    color: #333 !important; /* Color del texto */
+}
+
+/* Ajuste del botón activo */
+.accordion-button:not(.collapsed) {
+    background-color: #e9ecef !important; /* Color más oscuro al estar activo */
+    color: #000 !important;
+    border-bottom-left-radius: 0; /* Remueve bordes inferiores redondeados en activo */
+    border-bottom-right-radius: 0;
+}
+
+.regi-log-fondo{
+
+    background-image: url(./img/fondo-iniciar-sesion.jpg);
+}
+
+
+.parrafo-presupuesto{
+    color: white;
+
     font-size: 16px;
 }
 
 
+.FAQs-title{
 
+    color: white;
+    margin-bottom: 1.5%;
+}

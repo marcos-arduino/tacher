@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Link a BOOTSTRAP -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-        <!-- Link a CSS -->
-        <link rel="stylesheet" href="style.css" />
-        <!-- Link a Javascrypt -->
-        <!-- <script src="./index.js" defer></script> -->
-        <!-- Logo Pagina -->
-        <link rel="shortcut icon" href="img/logo_tacher.png" />
-        <!-- Link a Boxicons -->
-        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-        <!-- Fuente -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
-        <title>Tacher2</title>
-    </head>
-    <body>
-         
+
+<head>
+    <!-- Meta básico -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título de la página -->
+    <title>Tacher2</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/logo_tacher.png" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Estilos locales -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="PRINCIPIO">
         <header class="div-header">
             <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
+                <header
+                    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
                     <div class="col-md-3 mb-2 mb-md-0">
-                        <a class="navbar-brand" href="index.html"> <img class="logo-tacher" src="img/logo_tacher_white.png" alt="" /></a>
+                        <a class="navbar-brand " href="index.html">
+                            <img class="logo-tacher logo-tacher-header" src="img/logo_tacher_white.png" alt /></a>
                     </div>
-                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <ul class="navbarbutons nav  col-12 col-md-auto mb-2 justify-content-center">
                         <li>
                             <div class="elem-nav-i-f-sn">
                                 <a href="index.html" class="nav-link px-2 header_text">Inicio</a>
@@ -37,153 +52,480 @@
 
                         <li>
                             <div class="elem-nav-i-f-sn">
-                                <a href="#sobre-nosotros" class="nav-link px-2 header_text">Sobre Nosotros</a>
+                                <a href="#id_About" class="nav-link px-2 header_text">Sobre
+                                    Nosotros</a>
                             </div>
                         </li>
                         <li>
                             <div class="elem-nav-i-f-sn">
-                                <a href="#contacto" class="nav-link px-2 header_text">Contacto</a>
+                                <a href="#id_Pricing" class="nav-link px-2 header_text">
+                                    Pricing</a>
                             </div>
+                        </li>
+                        <li>
+                            <div class="elem-nav-i-f-sn">
+                                <a href="#id_Contact" class="nav-link px-2 header_text ">Contacto</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="elem-nav-i-f-sn">
+                                <a href="#id_FAQS" class="nav-link px-2 header_text">FAQs</a>
+                            </div>
+                        </li>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-link px-2 header_text" data-bs-toggle="dropdown"
+                                href="#" role="button" aria-expanded="false">Menu</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item burga-item " href="#profile.html"><i
+                                            class='bx bxs-user-circle'></i>Perfil</a></li>
+                                <li><a class="dropdown-item burga-item " href="#reward.html"><i
+                                            class='bx bxs-gift'></i>Recompensas</a></li>
+                                <li><a class="dropdown-item burga-item " href="#challenges.html"><i
+                                            class='bx bxs-calendar-week'></i>Desafios Semanales</a></li>
+                                <li><a class="dropdown-item burga-item " href="#tutorial.html"><i
+                                            class='bx bxs-graduation'></i>Tutoriales</a></li>
+                                <li><a class="dropdown-item burga-item " href="#forum.html"><i
+                                            class='bx bxs-graduation'></i>Foro</a></li>
+                                <li><a class="dropdown-item burga-item " href="#gallery.html"><i
+                                            class='bx bxs-image-alt'></i>Galeria</a></li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item burga-item " href="#"><i
+                                            class='bx bxs-cog'></i>Configuracion</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <div class="col-md-3 text-end">
-                        <a href="login.php"><button type="button" href="#" class="btn btn-outline-primary me-2 header_buttoms">Iniciar Sesion</button></a>
-                        <a href="register.php"><button type="button" href="#" class="btn btn-primary header_buttoms registrarse-background">Registrarse</button></a>
+                        <a href="login.php"><button type="button" href="#"
+                                class="btn btn-outline-primary me-2 header_buttoms">
+                                Iniciar Sesion
+                            </button></a>
+                        <a href="register.php"><button type="button" href="#"
+                                class="btn btn-primary header_buttoms registrarse-background">
+                                Registrarse
+                            </button></a>
                     </div>
                 </header>
             </div>
         </header>
         <!-------------------------------OBJETIVOS--------------------------------->
-        <div class="fondo">
+
+        <div class="fondo" id="id_Inicio">
             <div class="card banner-publi">
                 <img src="img/carousel_de_tacher.png" class="card-img" alt="..." />
             </div>
+            <section class="presentacion-tacher">
+                <h5>Tacher</h5>
+                <h2><b>¿Que es Tacher?</b></h2>
+                <p>Bienvenidos a nuestro proyecto de reciclaje inteligente, una iniciativa desarrollada por estudiantes.
+                    Nuestro objetivo es recopilar información sobre conductas de reciclaje, logrando que con esa
+                    información se mejore la efectividad en el reciclado. <br> <br>
+                    Nuestro proyecto no solo busca mejorar el manejo de residuos, sino también crear conciencia
+                    ambiental y promover prácticas sostenibles. ¡Únete a nosotros y contribuye al cuidado del planeta!
+                    Para más información, tutoriales y detalles del proyecto, sigue recorriendo nuestra página.
+                </p>
+            </section>
             <div class="container">
                 <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
                     <div class="feature col objetivosbox">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary fs-2 mb-3">
-                            <i class="bx bxs-leaf"></i>
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
+                            <i class='bx bxs-leaf'></i>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Amistoso con el Ambiente</h3>
-                        <p>Nuestro proyecto tiene como objetivo principal reducir la cantidad de plásticos que contaminan nuestro entorno, promoviendo prácticas de reciclaje responsable y sostenibilidad ambiental.</p>
+                        <h3 class="fs-2 text-body-emphasis"><b>Amistoso con
+                                el Ambiente</b></h3>
+                        <p>
+                            Nuestro proyecto tiene como objetivo principal
+                            reducir la cantidad
+                            de plásticos que contaminan nuestro entorno,
+                            promoviendo prácticas
+                            de reciclaje responsable y sostenibilidad
+                            ambiental.
+                        </p>
                     </div>
                     <div class="feature col objetivosbox">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary fs-2 mb-3">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
                             <i class="bx bxs-user-account"></i>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Registrate para participar</h3>
-                        <p>Registrate en menos de un minuto para poder formar parte del proyecto y cuidar el ambiente.</p>
-                        <a class="direcciones objetivos-registrarse" href="register.php"><i class="bx bxs-log-in"></i>Registrarse ahora</a>
+                        <h3 class="fs-2 text-body-emphasis"><b>Registrate
+                                para participar</b></h3>
+                        <p>
+                            Registrate en menos de un minuto para poder
+                            formar
+                            parte del
+                            proyecto y cuidar el ambiente.
+                        </p>
+                        <a class="direcciones objetivos-registrarse" href="register.php"><i
+                                class="bx bxs-log-in"></i>Registrarse
+                            ahora</a>
                     </div>
 
                     <div class="feature col objetivosbox">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary fs-2 mb-3">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
                             <i class="bx bx-world"></i>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Impacto Medible</h3>
-                        <p>En nuestro proyecto, hacemos un seguimiento constante del impacto ambiental que generamos. Te proporcionamos estadísticas en tiempo real para que puedas ver cómo tus esfuerzos de reciclaje y sostenibilidad están contribuyendo a un entorno más limpio y saludable.</p>
+                        <h3 class="fs-2 text-body-emphasis"><b>Impacto
+                                Medible</b></h3>
+                        <p>
+                            En nuestro proyecto, hacemos un seguimiento
+                            constante del impacto
+                            ambiental que generamos. Te proporcionamos
+                            estadísticas en tiempo
+                            real para que puedas ver cómo tus esfuerzos de
+                            reciclaje y
+                            sostenibilidad están contribuyendo a un entorno
+                            más
+                            limpio y
+                            saludable.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-------------------------------DESARROLLADORES--------------------------------->
-        <section class="testimonials text-center" id="sobre-nosotros">
-            <div class="div-Testimonios">
-                <div class="container">
-                    <h2 class="mb-5 texto-devs">DESARROLLADORES</h2>
-                    <div class="row margen-desarrolladores">
-                        <div class="col-lg-2 col-md-4 col-6 developer">
-                            <img class="img-fluid rounded-circle mb-3 tamano-circulo" src="img/WhatsApp Image 2023-11-15 at 14.43.15 (4).jpeg" alt="owner-1" />
-                            <h5 class="texto-devs">Marcos Arduino</h5>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 developer">
-                            <img class="img-fluid rounded-circle mb-3 tamano-circulo" src="img/WhatsApp Image 2023-11-15 at 14.43.15 (3).jpeg" alt="owner-2" />
-                            <h5 class="texto-devs">Valentín Giglio Perin</h5>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 developer">
-                            <img class="img-fluid rounded-circle mb-3 tamano-circulo" src="img/WhatsApp Image 2023-11-15 at 14.43.15.jpeg" alt="owner-3" />
-                            <h5 class="texto-devs">Joaquin Gutierrez</h5>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 developer">
-                            <img class="img-fluid rounded-circle mb-3 tamano-circulo" src="img/WhatsApp Image 2023-11-15 at 14.43.15 (2).jpeg" alt="owner-4" />
-                            <h5 class="texto-devs">Facundo Villegas</h5>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 developer">
-                            <img class="img-fluid rounded-circle mb-3 tamano-circulo" src="img/WhatsApp Image 2023-11-15 at 14.43.15 (1).jpeg" alt="owner-5" />
-                            <h5 class="texto-devs">Ezequiel Collins</h5>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 developer">
-                            <img class="img-fluid rounded-circle mb-3 tamano-circulo" src="img/WhatsApp Image 2023-11-15 at 14.43.15 (5).jpeg" alt="owner-6" />
-                            <h5 class="texto-devs">Samuel Pérez Vallejos</h5>
-                        </div>
-                    </div>
-                    <h4 class="texto-devs">Somos un grupo de estudiantes de la Escuela Técnica N°36 D.E. 15 Alte. Guillermo Brown. Hicimos este proyecto para incentivar el reciclaje haciendo uso de nuestras habilidades tecnológicas. Ayúdanos a construir un mundo más sostenible.</h4>
+    </div>
+
+    <!-- IMAGEN TACHER CON LOS CHICOS -->
+
+    <section class="centrar-carusel">
+        <div id="carouselExampleControls" class="carousel slide school-image" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/tacher_chicos.jpg" class="d-block w-100"
+                        alt="Jovenes desarrolladores mostrando el tacho a niños">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/uso-tacher.jpg" class="d-block w-100" alt="...">
+                </div>
+                <!--  <div class="carousel-item">
+                    <img src="./img/Diagrama-en-bloque.jpg" class="d-block w-100" alt="...">
+                </div> -->
+                <div class="carousel-item">
+                    <img src="./img/trabajando-en-tacher.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
-        </section>
-        <!-------------------------------FOOTER--------------------------------->
-        <footer id="contacto">
-            <div class="fluid-container black div-footer-tacher">
-                <div class="row g-0 d-flex">
-                    <div class="col-4 offset-1 py-2 pb-2 d-none d-md-block">
-                        <img src="img/logo_tacher.png" alt="Logo" height="40vh" />
-                    </div>
-                    <div class="col-10 offset-1 py-2 pb-2 d-md-none text-center mt-3">
-                        <img src="img/logo_tacher.png" alt="Logo" height="40vh" class="mb-3" />
-                    </div>
-                    <div class="col-auto ms-auto my-auto d-none d-md-block">
-                        <div class="text-center">
-                            <a href="https://www.facebook.com/escuelatecnica36" class="text-decoration-none" target="_blank">
-                                <i class="bx bxl-facebook-circle facebooket footer-iconos"></i>
-                            </a>
-                            <a href="https://mail.google.com/" class="text-decoration-none">
-                                <i class="bx bxl-gmail gmail footer-iconos"></i>
-                            </a>
-                            <a href="https://www.google.com/maps/place/Escuela+T%C3%A9cnica+36+D.E.+15+-+Alte.+Brown/@-34.5607942,-58.4942549,16.81z/data=!4m6!3m5!1s0x95bcb6f1ce409681:0xed70920e983fcb6a!8m2!3d-34.5606214!4d-58.4939421!16s%2Fg%2F11c55rrf0l?entry=ttu" class="text-decoration-none">
-                                <i class="bx bxs-map mapa footer-iconos"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-1"></div>
-                    <div class="col-10 offset-1 border-bottom grey-border"></div>
-                    <div class="col-10 offset-1 border-bottom grey-border text-center white">
-                        <div class="col-12 d-md-none">
-                            <div class="text-center mb-1">
-                                <a href="https://www.facebook.com/escuelatecnica36" target="_blank" class="ms-auto me-1 text-decoration-none">
-                                    <i class="bx bxl-facebook-circle facebooket"></i>
-                                </a>
-                                <a href="https://mail.google.com/" class="text-decoration-none">
-                                    <i class="bx bxl-gmail gmail"></i>
-                                </a>
-                                <a href="https://www.google.com/maps/place/Escuela+T%C3%A9cnica+36+D.E.+15+-+Alte.+Brown/@-34.5607942,-58.4942549,16.81z/data=!4m6!3m5!1s0x95bcb6f1ce409681:0xed70920e983fcb6a!8m2!3d-34.5606214!4d-58.4939421!16s%2Fg%2F11c55rrf0l?entry=ttu" class="text-decoration-none">
-                                    <i class="bx bxs-map mapa"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <a href="mailto:tacher2consultas@gmail.com" class="text-black footer-palabras">
-                            <h4>tacher2consultas@gmail.com</h4>
-                        </a>
-                        <a href="tel:+5491165742379" class="text-black footer-palabras">+54 9 11 6574-2379</a>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!--  <section class="u-align-left u-clearfix u-container-align-left u-image u-shading u-section-5 " id="sec-b549">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1 pechland2">
+            <h1 class="u-align-left"><b>Nuestra APP</b></h1>
+            <p class="u-align-left">Utiliza nuestra aplicacion, para acceder a Tacher en cualquier momento!</p>
+        </div>
+    </section> -->
+
+    <section id="id_About" class="about-section">
+        <div class="container">
+            <h2 class="titulo-margen texto-info section-title text-center">¿Por qué elegirnos?</h2>
+            <p class="texto-info section-subtitle text-center">Estos son algunos números del proyecto</p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-content">
+                        <h3  class="stat-number" data-animation-name="counter" data-animation-event="scroll"
+                        data-animation-duration="2000" style="will-change: contents"> 25M+
+                            
+                        </h3>
+                        <h5 class="stat-label">Usuarios Registrados</h5>
                     </div>
                 </div>
-                <div style="color: black" class="col-10 offset-1 py-2 pb-0 text-center small">Tacher © 2023 | Todos los derechos reservados.</div>
-                <div class="col-12">
-                    <ul class="nav text-center mt-1 justify-content-center small">
-                        <li>
-                            <a href="index.html" class="nav-link px-2 footer_text">Inicio</a>
+                <div class="stat-item">
+                    <div class="stat-content">
+                        <h3 class="stat-number">575+</h3>
+                        <h5 class="stat-label">Tachos Instalados</h5>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-content">
+                        <h3 class="stat-number">300M</h3>
+                        <h5 class="stat-label">Puntos Obtenidos</h5>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-content">
+                        <h3 class="stat-number">98,452</h3>
+                        <h5 class="stat-label">Productos Registrados</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICIIIINGGG -->
+
+    <section id="id_Pricing">
+        <div class="pricing-titulo">
+            <h2 class=" texto-info text-center">
+                Opciones de precios para todos los presupuestos.</h2>
+            <p class=" parrafo-presupuesto text-center"> Elige tu
+                presupuesto y obten tu version de Tacher con sus
+                caracteristicas</p>
+        </div>
+        <div class="card-group pricing-sec">
+            <div class="card margen-card rounded-5">
+                <div class="card-body">
+                    <div class="fondo-difuminado card-encabezado">
+                        <h5 class="card-title">Tacher Básico</h5>
+                        <h3 class="stat-number">$$$$</h3>
+                    </div>
+                    <ul class="lista-caracteristicas u-file-icon u-text">
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Pantalla LCD
                         </li>
-                        <li>
-                            <a href="index.html#sobre-nosotros" class="nav-link px-2 footer_text">Sobre Nosotros</a>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Panel solar pequeño
                         </li>
-                        <li>
-                            <a href="index.html#contacto" class="nav-link px-2 footer_text">Contacto</a>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Sin tacho integrado (Colocarse sobre tacho)
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Asistencia 24/7 e Instalación gratuita
                         </li>
                     </ul>
+                    <a href="#"
+                        class="fondo-difuminado u-active-palette-3-light-1 u-border-none u-btn u-btn-round u-button-style u-custom-font u-custom-item u-font-montserrat u-hover-palette-3-light-1 u-palette-3-base u-radius-50 u-text-body-alt-color u-btn-3 no-linea"
+                        data-animation-name data-animation-duration="0" data-animation-delay="0"
+                        data-animation-direction>Saber más&nbsp;<span
+                            class="u-file-icon u-icon u-text-white achicar-flecha"><img class="achicar-flecha"
+                                src="https://assets.nicepagecdn.com/1b87941a/6274217/images/7708012-56b340cf.png"
+                                alt></span>
+                    </a>
                 </div>
             </div>
+            <div class="card margen-card rounded-5">
+                <div class="card-body">
+                    <div class="fondo-difuminado card-encabezado">
+                        <h5 class="card-title">Tacher Estándar</h5>
+                        <h3 class="stat-number">$$$$</h3>
+                    </div>
+                    <ul class="lista-caracteristicas u-file-icon u-text">
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Pantalla y altavoz
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Panel solar mediano
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Con tacho integrado y vaciado manual
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Asistencia 24/7 e Instalación gratuita
+                        </li>
+                    </ul>
+                    <a href="#"
+                        class="fondo-difuminado u-active-palette-3-light-1 u-border-none u-btn u-btn-round u-button-style u-custom-font u-custom-item u-font-montserrat u-hover-palette-3-light-1 u-palette-3-base u-radius-50 u-text-body-alt-color u-btn-3 no-linea"
+                        data-animation-name data-animation-duration="0" data-animation-delay="0"
+                        data-animation-direction>Saber más&nbsp;<span
+                            class="u-file-icon u-icon u-text-white achicar-flecha"><img class="achicar-flecha"
+                                src="https://assets.nicepagecdn.com/1b87941a/6274217/images/7708012-56b340cf.png"
+                                alt></span>
+                    </a>
+                </div>
+            </div>
+            <div class="card margen-card rounded-5">
+                <div class="card-body">
+                    <div class="card-encabezado fondo-difuminado ">
+                        <h5 class="card-title">Tacher Avanzado</h5>
+                        <h3 class="stat-number">$$$$</h3>
+                    </div>
+                    <ul class="lista-caracteristicas u-file-icon u-text">
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Pantalla, altavoz y teclado
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Panel solar grande
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Con tacho integrado y servicio de vaciado.
+                        </li>
+                        <li class="caracteristica-ind">
+                            <div class="u-list-icon"></div>Asistencia 24/7 e Instalación gratuita
+                        </li>
+                    </ul>
+                    <a href="#"
+                        class="fondo-difuminado u-active-palette-3-light-1 u-border-none u-btn u-btn-round u-button-style u-custom-font u-custom-item u-font-montserrat u-hover-palette-3-light-1 u-palette-3-base u-radius-50 u-text-body-alt-color u-btn-3 no-linea"
+                        data-animation-name data-animation-duration="0" data-animation-delay="0"
+                        data-animation-direction>Saber más&nbsp;<span
+                            class="u-file-icon u-icon u-text-white achicar-flecha"><img class="achicar-flecha"
+                                src="https://assets.nicepagecdn.com/1b87941a/6274217/images/7708012-56b340cf.png"
+                                alt></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="u-clearfix u-section-8 seccionContacto" id="id_Contact">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="contact-container">
+                <!-- Información de contacto -->
+                <div class="card contact-info">
+                    <div class="card-body centrar-escuela">
+                        <img class="u-image u-image-default u-preserve-proportions contact-logo" 
+                            src="./img/logoescuela.jpg" 
+                            alt="Logo de la Escuela">
+                        <h4 class="u-text u-text-default contact-description" > ESCUELA TÉCNICA N°36 D.E. 15 "Alte. GUILLERMO BROWN" </h4>
+                        <p class="u-text u-text-default contact-description">
+                            Escuela Técnica Pública, con orientación en Computación y Construcciones. Comprometidos con el uso
+                            correcto de la tecnología y el cuidado del ambiente.
+                        </p>
+                        <div class="u-line-horizontal"></div>
+                    </div>
+                    <img src="./img/escuela-foto.jpg" class="card-img-bottom school-image" alt="Foto de la Escuela">
+                    <h5 class="u-text u-text-default mt-3">Nuestra Escuela</h5>
+                    <p class="u-text u-text-default">Galván 3700, Cdad. Autónoma de Buenos Aires, Argentina</p>
+                </div>
+    
+                <!-- Formulario de contacto -->
+                <div class="contact-form-container">
+                    <h4 class="contact-form centrar-contacto-titulo " >CONTACTANOS</h4>
+                    <h5 class="contact-form centrar-contacto-titulo" >Cualquier consulta o sugerencia completar formulario</h5>
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="first-name">Nombre</label>
+                            <input type="text" id="first-name" name="firstName" placeholder="Ingrese su Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Apellido</label>
+                            <input type="text" id="last-name" name="lastName" placeholder="Ingrese su Apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Número</label>
+                            <input type="tel" id="phone" name="phone"
+                                placeholder="Ingrese su Número (Ej: +5491112345678)" required
+                                pattern="^\+?\d{0,3}[\s\(\-]?\d{2,3}[\s\)\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Ingrese su Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Escriba su mensaje..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="disabled" class="btn-submit fondo-difuminado">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+
+    <!-- PREGUNTAS FRECUENTESSS -->
+    <section class="preguntasfre" id="id_FAQS">
+        <h3 class="section-title text-center FAQs-title">Preguntas Frecuentes</h3>
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        ¿Cómo funciona el tacho inteligente de reciclaje?
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        El tacho inteligente de reciclaje está diseñado para facilitar y promover el reciclaje mediante
+                        un proceso automatizado y recompensas. Cuando un usuario desea reciclar, debe escanear su DNI en
+                        la pantalla LCD del tacho. Luego, abre la compuerta e ingresa el producto a reciclar. Una vez
+                        cerrada la compuerta, el dispositivo escanea el producto usando una cámara con inteligencia
+                        artificial para verificar si es reciclable. Si es aceptado, el producto se deposita en el
+                        espacio de almacenamiento interno y el usuario recibe puntos en su cuenta, los cuales pueden ser
+                        canjeados por recompensas.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        ¿Qué tipo de productos puedo reciclar en el tacho inteligente?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        El tacho inteligente está diseñado para aceptar una variedad de productos reciclables comunes,
+                        tales como botellas de plástico, latas de aluminio, papeles y cartones. La inteligencia
+                        artificial del dispositivo analiza el objeto ingresado para confirmar su reciclabilidad. Si el
+                        producto no es reciclable, el sistema notificará al usuario para que lo retire y lo deposite en
+                        el contenedor adecuado.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        ¿Cómo se gestionan las recompensas y los puntos acumulados?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Las recompensas y los puntos acumulados se gestionan a través de una base de datos vinculada al
+                        DNI del usuario. Al escanear su DNI, el tacho inteligente asocia el número del DNI con una
+                        cuenta previamente registrada en nuestra página web. Cada vez que un usuario recicla un producto
+                        aceptado, se le otorgan puntos en su cuenta. Estos puntos pueden ser consultados y canjeados por
+                        recompensas a través de la misma página web, incentivando así el reciclaje continuo y
+                        responsable.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOOOTEEERR -->
+    <div class="footer-tacher container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3" role="contentinfo">
+            <p class="col-md-4 texto-item-footer-derechos">Tacher © 2024 | Todos los derechos reservados.</p>
+            <!-- Footer Navigation Links -->
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item footer-item-tacher">
+                    <a href="#id_Inicio" class="nav-link px-2 texto-item-footer" aria-label="Inicio"><i
+                            class='bx bxs-home'></i>Inicio</a>
+                </li>
+                <li class="nav-item footer-item-tacher">
+                    <a href="#id_About" class="nav-link px-2 texto-item-footer" aria-label="Saber más"><i
+                            class='bx bxs-info-circle'></i>Saber más</a>
+                </li>
+                <li class="nav-item footer-item-tacher">
+                    <a href="#id_Pricing" class="nav-link px-2 texto-item-footer" aria-label="Pricing"><i
+                            class='bx bxs-purchase-tag'></i>Pricing</a>
+                </li>
+                <li class="nav-item footer-item-tacher">
+                    <a href="#id_FAQS" class="nav-link px-2 texto-item-footer" aria-label="FAQs"><i
+                            class='bx bxs-message-error'></i>FAQs</a>
+                </li>
+                <li class="nav-item footer-item-tacher">
+                    <a href="#id_Contact" class="nav-link px-2 texto-item-footer" aria-label="Contacto"><i
+                            class='bx bxs-contact'></i>Contacto</a>
+                </li>
+            </ul>
         </footer>
-        <!-- SCRIPTS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    </body>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
 </html>

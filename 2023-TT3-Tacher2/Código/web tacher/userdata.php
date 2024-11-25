@@ -32,7 +32,7 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
     <title>Tacher</title>   
 </head>
 
-<body class="sub-body">
+<body>
     <header>
         <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -81,12 +81,10 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
             </div>
         </div>
     </div>
-
-    
     <script>
-        var dni = <?php echo $data_usuario[0]['dni']; ?>; /* CONSULTA DNI PHP  */
+         var dni = "<?php echo $data_usuario[0]['dni']; ?>"; /* CONSULTA DNI PHP  */
     </script>
-
+    
     <!-- BOTON APARICION QR -->
     <div class="botonVerQR boton-modal">
         <label for="btn-modal">
@@ -149,7 +147,7 @@ list($data_usuario, $data_puntos, $resultado_rank) = userData($_SESSION['user'],
                         </a>
                 </div>
             </div>
-            <div class="col-10 offset-1 py-2 pb-0 text-center small">Tacher © 2023 | All rights reserved.</div>
+            <div class="col-10 offset-1 py-2 pb-0 text-center small">Tacher Â© 2023 | All rights reserved.</div>
             <div class="col-12">
                 <ul class="nav text-center mt-1 justify-content-center small">
                     <li>
