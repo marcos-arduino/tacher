@@ -422,12 +422,13 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: all 300ms ease;
-}
+    background-image: url(./img/Orange\ Coral.jpg);
 
-.boton-modal label {
-    background-color: #708679;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
 }
-
 /* Ventana modal */
 #btn-modal {
     display: none;
